@@ -24,8 +24,8 @@ const Sidebar = () => {
               <img src="https://picsum.photos/40/40" alt="User avatar" />
             </div>
             <div className="sidebar__user-info">
-              <h3 className="sidebar__username">Samantha</h3>
-              <p className="sidebar__email">samantha@example.com</p>
+              <h3 className="sidebar__username">Bohdan-Subota</h3>
+              <p className="sidebar__email">test@gmail.com</p>
             </div>
           </div>
           <button className="sidebar__settings">
