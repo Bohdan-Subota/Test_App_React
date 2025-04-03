@@ -15,6 +15,9 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar__content">
+        <div className="sidebar__logo">
+          <h1>Logo</h1>
+        </div>
         <div className="sidebar__profile">
           <div className="sidebar__profile-main">
             <div className="sidebar__avatar">

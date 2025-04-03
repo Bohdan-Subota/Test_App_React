@@ -140,4 +140,17 @@
         color: #dc2626;
       }
     }
+  
+    &__logo {
+      padding: 1.43rem;
+      border-bottom: 1px solid #e2e8f0;
+  
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-style: italic;
+        color: #1e293b;
+        font-weight: 600;
+      }
+    }
   }
