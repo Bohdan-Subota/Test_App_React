@@ -1,13 +1,20 @@
+import { BiBookmark } from 'react-icons/bi';
 import './ResourceCard.scss';
 
-export interface ResourceCardProps {
+export type ResourceType = 'digital-essentials' | 'data-driven' | 'content-strategy' | 'marketing-automation';
+
+interface ResourceCardProps {
   image: string;
   title: string;
   description: string;
-  type: 'document' | 'video' | 'template';
+  type: ResourceType;
+  isBookmarked: boolean;
+  activeFilter?: string;
 }
 
-const ResourceCard = ({ image, title, description, type }: ResourceCardProps) => {
+const ResourceCard = ({ image, title, description, isBookmarked }: ResourceCardProps) => {
+  //const isBookmarkView = activeFilter === 'bookmarks';
+  
   return (
     <div className="resource-card">
       <div className="resource-card__image">
@@ -16,12 +23,21 @@ const ResourceCard = ({ image, title, description, type }: ResourceCardProps) =>
       <div className="resource-card__content">
         <h3 className="resource-card__title">{title}</h3>
         <p className="resource-card__description">{description}</p>
-        <div className="resource-card__footer">
-          <span className="resource-card__type">
-            {type === 'document' && <i className="far fa-file-alt"></i>}
-            {type === 'video' && <i className="far fa-play-circle"></i>}
-            {type === 'template' && <i className="far fa-copy"></i>}
-          </span>
+      </div>
+      <div className="resource-card__actions">
+        <div className="resource-card__action-button">
+          <button 
+            className="resource-card__bookmark"
+            aria-label={isBookmarked ? 'Remove from bookmarks' : 'Add to bookmarks'}
+          >
+            <BiBookmark 
+              color="#007bff"
+              fill={isBookmarked ? '#007bff' : '#000000'} 
+              size={20} 
+            />
+          </button>
+        </div>
+        <div className="resource-card__action-button">
           <button className="resource-card__more">View →</button>
         </div>
       </div>

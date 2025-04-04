@@ -26,13 +26,16 @@
     color: #64748b;
     position: relative;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 
     &:hover {
       color: #1e293b;
     }
 
     &--active {
-      color: #1e293b;
+      color: #007bff;
       
       &::before {
         content: '';

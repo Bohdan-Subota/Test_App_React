@@ -11,42 +11,48 @@ const MOCK_RESOURCES = [
     image: 'https://picsum.photos/200/300',
     title: 'Top 5 Templates',
     description: 'Discover the most compelling story in campaign that resonates with consumers',
-    type: 'template' as const,
+    type: 'digital-essentials' as const,
+    isBookmarked: false,
   },
   {
     id: 2,
     image: 'https://picsum.photos/200/300?random=1',
     title: 'Marketing Strategy Guide',
     description: 'Learn how to create effective marketing strategies that drive results',
-    type: 'document' as const,
+    type: 'content-strategy' as const,
+    isBookmarked: true,
   },
   {
     id: 3,
     image: 'https://picsum.photos/200/300?random=2',
     title: 'Data Analysis Basics',
     description: 'Master the fundamentals of data-driven decision making',
-    type: 'video' as const,
+    type: 'data-driven' as const,
+    isBookmarked: false,
   },
   {
     id: 4,
     image: 'https://picsum.photos/200/300?random=3',
     title: 'Digital Workspace Setup',
     description: 'Create an efficient digital workspace for your team',
-    type: 'template' as const,
+    type: 'digital-essentials' as const,
+    isBookmarked: true,
   },
   {
     id: 5,
     image: 'https://picsum.photos/200/300?random=4',
     title: 'Presentation Templates',
     description: 'Professional templates for impactful presentations',
-    type: 'document' as const,
+    type: 'marketing-automation' as const,
+    isBookmarked: false,
   },
   {
     id: 6,
     image: 'https://picsum.photos/200/300?random=5',
     title: 'Analytics Dashboard Guide',
     description: 'Learn to create and interpret analytics dashboards',
-    type: 'video' as const,
+    type: 'data-driven' as const,
+    isBookmarked: true,
   }
 ];
 
@@ -57,9 +63,11 @@ const Resources = () => {
     setActiveFilter(filter);
   };
 
-  const filteredResources = MOCK_RESOURCES.filter(resource => 
-    activeFilter === 'all' ? true : resource.type === activeFilter
-  );
+  const filteredResources = MOCK_RESOURCES.filter(resource => {
+    if (activeFilter === 'all') return true;
+    if (activeFilter === 'bookmarks') return resource.isBookmarked;
+    return resource.type === activeFilter;
+  });
 
   return (
     <Layout pageTitle="Resources">
@@ -73,6 +81,8 @@ const Resources = () => {
               title={resource.title}
               description={resource.description}
               type={resource.type}
+              isBookmarked={resource.isBookmarked}
+              activeFilter={activeFilter}
             />
           ))}
         </div>

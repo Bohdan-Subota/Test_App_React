@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { BiBookmark } from 'react-icons/bi';
 import './ResourceFilters.scss';
 
-export type FilterType = 'all' | 'template' | 'document' | 'video';
+export type FilterType = 'all' | 'digital-essentials' | 'data-driven' | 'content-strategy' | 'marketing-automation' | 'bookmarks';
 
 interface FilterItem {
   id: FilterType;
   label: string;
+  icon?: React.ReactNode;
 }
 
 interface ResourceFiltersProps {
@@ -13,10 +15,12 @@ interface ResourceFiltersProps {
 }
 
 const FILTERS: FilterItem[] = [
-  { id: 'all', label: 'All Resources' },
-  { id: 'template', label: 'Templates' },
-  { id: 'document', label: 'Documents' },
-  { id: 'video', label: 'Videos' }
+  { id: 'all', label: 'All' },
+  { id: 'digital-essentials', label: 'Digital Essentials' },
+  { id: 'data-driven', label: 'Data-Driven' },
+  { id: 'content-strategy', label: 'Content Strategy' },
+  { id: 'marketing-automation', label: 'Marketing Automation' },
+  { id: 'bookmarks', label: 'Bookmarks', icon: <BiBookmark size={18} /> }
 ];
 
 const ResourceFilters = ({ onFilterChange }: ResourceFiltersProps) => {
@@ -36,6 +40,7 @@ const ResourceFilters = ({ onFilterChange }: ResourceFiltersProps) => {
               className={`resource-filters__button ${activeFilter === filter.id ? 'resource-filters__button--active' : ''}`}
               onClick={() => handleFilterClick(filter.id)}
             >
+              {filter.icon}
               {filter.label}
             </button>
           </li>
